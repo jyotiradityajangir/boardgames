@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Products - Classic Board Games Store</title>
+</head>
+<body>
+    <header>
+        <h1>Classic Board Games Store</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+                <li><a href="support.html">Support</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="products">
+            <h2>Explore Our Collection of Classic Board Games</h2>
+
+            <!-- Display products dynamically using JavaScript -->
+            <div id="products-container"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Classic Board Games Store</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Simulated product data for demonstration purposes
+        const products = [
+            { name: 'Monopoly', price: 29.99, image: 'gettyimages-458577337-612x612.jpg' },
+            { name: 'Scrabble', price: 19.99, image: 'gettyimages-1054669742-612x612.jpg' },
+            { name: 'Risk', price: 39.99, image: 'C46CAAD8_5.jpg' },
+            { name: 'Clue', price: 24.99, image: 'download.jpeg' },
+            { name: 'Candy Land', price: 14.99, image: 'OIP.jpeg' },
+            { name: 'Battleship', price: 34.99, image: '911fxkKxfDL.__AC_SY300_SX300_QL70_ML2_.jpg' },
+            { name: 'Connect Four', price: 19.99, image: 'https___media-www.canadiantire.ca_product_seasonal-gardening_toys_toys-games_0501143_connect-4-launchers-6f48943b-bd73-4e48-85ab-26c93d21cb0f.png_640x.webp' },
+            { name: 'Operation', price: 22.99, image: 'OIP (1).jpeg' },
+            // Add more products as needed
+        ];
+
+        // Load products on document load
+        document.addEventListener('DOMContentLoaded', function () {
+            loadProducts();
+        });
+
+        // Function to load and display products
+        function loadProducts() {
+            const productsContainer = document.getElementById('products-container');
+
+            // Clear previous content
+            productsContainer.innerHTML = '';
+
+            // Display products dynamically
+            products.forEach(product => {
+                const productElement = document.createElement('div');
+                productElement.classList.add('product');
+
+                productElement.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}">
+                    <p>${product.name} - $${product.price.toFixed(2)}</p>
+                    <button onclick="addToCart('${product.name}', ${product.price})">Add to Cart</button>
+                    <button onclick="addToWishlist('${product.name}')">Add to Wishlist</button>
+                `;
+
+                productsContainer.appendChild(productElement);
+            });
+        }
+    </script>
+</body>
+</html>

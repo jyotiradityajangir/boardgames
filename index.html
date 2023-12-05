@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Classic Board Games Store</title>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Classic Board Games Store</h1>
+        <nav>
+            <ul>
+                
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+                <li><a href="support.html">Support</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="featured-products">
+            <h2>Featured Products</h2>
+            <!-- Featured products will be added dynamically using JavaScript -->
+            <div id="featured-products-container"></div>
+        </section>
+
+        <section id="recommended-products">
+            <h2>Recommended Products</h2>
+            <!-- Recommended products will be added dynamically using JavaScript -->
+            <div id="recommended-products-container"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Classic Board Games Store</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Load products on document load
+        document.addEventListener('DOMContentLoaded', function () {
+            loadFeaturedProducts();
+            loadRecommendedProducts();
+        });
+
+        // Function to load and display featured products
+        function loadFeaturedProducts() {
+            // You can customize this logic based on your needs
+            var featuredProductsContainer = document.getElementById('featured-products-container');
+
+            // Sample data - replace with actual data retrieval from your backend
+            var featuredProductsData = [
+                { name: 'Monoploy', price: 19.99, image: 'gettyimages-458577337-612x612.jpg' },
+                { name: 'Risk', price: 24.99, image: 'C46CAAD8_5.jpg' }
+                // Add more featured products as needed
+            ];
+
+            featuredProductsData.forEach(function (product) {
+                var productElement = createProductElement(product);
+                featuredProductsContainer.appendChild(productElement);
+            });
+        }
+
+        // Function to load and display recommended products
+        function loadRecommendedProducts() {
+            // You can customize this logic based on your needs
+            var recommendedProductsContainer = document.getElementById('recommended-products-container');
+
+            // Sample data - replace with actual data retrieval from your backend
+            var recommendedProductsData = [
+                { name: 'Battleship', price: 29.99, image: '911fxkKxfDL.__AC_SY300_SX300_QL70_ML2_.jpg' },
+                { name: 'Scrabble', price: 14.99, image: 'gettyimages-1054669742-612x612.jpg' }
+                // Add more recommended products as needed
+            ];
+
+            recommendedProductsData.forEach(function (product) {
+                var productElement = createProductElement(product);
+                recommendedProductsContainer.appendChild(productElement);
+            });
+        }
+
+        // Function to create a product element
+        function createProductElement(product) {
+            var productElement = document.createElement('div');
+            productElement.classList.add('product');
+
+            productElement.innerHTML = `
+                <img src="${product.image}" alt="${product.name}">
+                <p>${product.name} - $${product.price.toFixed(2)}</p>
+                <button onclick="addToCart('${product.name}', ${product.price})">Add to Cart</button>
+                <button onclick="addToWishlist('${product.name}')">Add to Wishlist</button>
+            `;
+
+            return productElement;
+        }
+
+        // Function to add a product to the cart
+        function addToCart(productName, price) {
+            // Add your logic to handle adding to the cart
+            console.log(productName + ' added to cart!');
+        }
+
+        // Function to add a product to the wishlist
+        function addToWishlist(productName) {
+            // Add your logic to handle adding to the wishlist
+            console.log(productName + ' added to wishlist!');
+        }
+    </script>
+</body>
+</html>
